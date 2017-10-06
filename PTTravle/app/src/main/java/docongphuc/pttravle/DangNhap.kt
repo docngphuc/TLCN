@@ -23,14 +23,16 @@ class DangNhap : Fragment(){
         var username=view.findViewById<EditText>(R.id.TenDN);
         var passw=view.findViewById<EditText>(R.id.Pass)
         var dn=view.findViewById<Button>(R.id.DangNhapTK);
-        var anhdaidien:CircleImageView = activity.findViewById<CircleImageView>(R.id.profile_image);
+
         var Luu=view.findViewById<CheckBox>(R.id.LuuTT);
         dn.setOnClickListener( {
             if (Luu.isChecked) {
                 //Toast.makeText(this.context, ""+TenDN.text.toString(), Toast.LENGTH_SHORT).show();
-                if (username.text.toString().trim().equals("phuc") && passw.text.toString().equals("123")) {
-                    anhdaidien.setImageResource(R.drawable.anhdaidien);
-                    Toast.makeText(this.activity, "abcd", Toast.LENGTH_SHORT).show();
+                if (username.text.toString().trim().equals("phuc") && passw.text.toString().trim().equals("123")) {
+
+                    addtaikhoan();
+                    doctaikhoan()
+                    xoaTK()
                 }
             }
         });
@@ -41,15 +43,22 @@ class DangNhap : Fragment(){
     {
         val sharedpreferences=this.activity.getSharedPreferences(sharedprperences,android.content.Context.MODE_PRIVATE);
         val editor=sharedpreferences.edit();
-        editor.putString(UserName,"phuc");
-        editor.putString(PassWord,"'pass");
-        editor.apply();
+        editor.putString(UserName,"phu");
+        editor.putString(PassWord,"deo");
+        editor.apply()
 
     }
     fun doctaikhoan(){
         val sharedpreferences=this.activity.getSharedPreferences(sharedprperences,android.content.Context.MODE_PRIVATE);
-        val username :String=sharedpreferences.getString(UserName,"a");
-        val pass : String=sharedpreferences.getString(PassWord,"123")
+        val editor=sharedpreferences.edit();
+        val username :String=sharedpreferences.getString(UserName,null);
+        val pass : String=sharedpreferences.getString(PassWord,null)
+        if (username!==null)
+        {
+            var anhdaidien: CircleImageView = activity.findViewById<CircleImageView>(R.id.profile_image);
+            anhdaidien.setImageResource(R.drawable.anhdaidien);
+            Toast.makeText(this.activity, "abcd", Toast.LENGTH_SHORT).show();
+        }
     }
     fun xoaTK(){
         val sharedpreferences=this.activity.getSharedPreferences(sharedprperences,android.content.Context.MODE_PRIVATE);
