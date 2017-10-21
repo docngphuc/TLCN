@@ -3,42 +3,50 @@
      android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
-            android:background="#e2e2e2"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:weightSum="2">
-            <Button
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:background="#ffffff"
-                android:text="Thể Loại"
-                android:id="@+id/btntheloai"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-            <Button
-                android:layout_marginBottom="4dp"
-                android:background="#ffffff"
-                android:text="Địa Điểm"
-                android:id="@+id/btntinhthanh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"/>
-        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/content_dulich"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="43dp">
 
         </FrameLayout>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+            <Button
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/botrongoc"
+                android:text="Thể Loại"
+                android:id="@+id/btntheloai"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"/>
+            <Button
+                android:textColor="@color/black"
+                android:background="@drawable/botrongoc"
+                android:text="Địa Điểm"
+                android:id="@+id/btntinhthanh"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"/>
+        </LinearLayout>
+
+    </FrameLayout>
 
 </FrameLayout>

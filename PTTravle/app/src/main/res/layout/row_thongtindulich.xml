@@ -1,35 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGrey">
     <LinearLayout
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/AnhDaijDien_DL"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:src="@drawable/anhdaidien"
+                android:scaleType="centerCrop"/>
+        <LinearLayout
             android:layout_marginLeft="2dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tenquan"
+                android:id="@+id/TenDiaDiem_DL"
                 android:text="tenquan"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DiaChi_DL"
+                android:id="@+id/DiaChi_DL"/>
         </LinearLayout>
-        <TextView
-            android:layout_marginLeft="10dp"
+
+        </LinearLayout>
+        <ImageView
+            app:srcCompat="@drawable/ic_android_black_24dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="diachi"
-            android:id="@+id/diachi"/>
-        <android.support.v4.view.ViewPager
-            android:layout_width="fill_parent"
             android:layout_height="200dp"
-            android:id="@+id/viewpagerIMG"/>
+            android:id="@+id/Anh_DL"
+             />
         <LinearLayout
+            android:layout_marginBottom="2dp"
             android:background="@color/textcolor"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
@@ -38,39 +64,44 @@
             android:layout_gravity="center"
             android:weightSum="10">
             <ImageButton
+                android:background="@color/white"
+                android:id="@+id/Btn_Like"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1.5"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
+                android:scaleType="center"
                 android:padding="0dp"
-                android:layout_width="30dp"
-                android:layout_height="40dp"
-                android:src="@drawable/iconlike"/>
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:src="@drawable/like"/>
             <TextView
+                android:layout_marginLeft="5dp"
                 android:layout_gravity="center"
                 android:layout_weight="1.5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/luoclike"
+                android:id="@+id/SoLuotLike"
                 android:text="1222"
-                android:textSize="10sp"/>
+                android:textSize="15sp"/>
             <ImageButton
+                android:background="@color/white"
+                android:id="@+id/Btn_Comment"
                 android:layout_weight="1.5"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
+                android:scaleType="center"
                 android:padding="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@drawable/comments"/>
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:src="@drawable/comment"/>
             <TextView
                 android:layout_gravity="center"
                 android:layout_weight="1.5"
-                android:layout_margin="20dp"
+                android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/soanh"
+                android:id="@+id/SoComment"
                 android:text="1222"
-                android:textSize="10sp"/>
+                android:textSize="15sp"/>
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,9 +109,10 @@
                 android:layout_weight="4"
                 android:layout_gravity="center">
                 <RatingBar
+                    android:rating="3.5"
                     style="?android:attr/ratingBarStyleSmall"
                     android:progressTint="#f7d601"
-                    android:id="@+id/danhgia"
+                    android:id="@+id/DanhGia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:max="5"
@@ -89,19 +121,7 @@
                     android:stepSize="0.5" />
             </FrameLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="vertical"
-            android:background="#ffff">
-            <EditText
-                android:layout_marginLeft="20dp"
-                android:hint="Bình luận"
-                android:background="#ffff"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/writecomment"/>
-        </LinearLayout>
+
 
     </LinearLayout>
 </LinearLayout>

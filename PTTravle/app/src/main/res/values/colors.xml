@@ -10,4 +10,6 @@
     <color name="red">#fa0303</color>
     <color name="blue">#0744ed</color>
     <color name="black">#000000</color>
+    <color name="duskYellow">#ffbf00</color>
+    <color name="lightGrey">#c1c1c1</color>
 </resources>

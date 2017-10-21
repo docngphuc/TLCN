@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         navigationView = findViewById<NavigationView>(R.id.navigation);
         initNavigationDrawer();
-        var fragmentManager = supportFragmentManager
-        var transaction = fragmentManager.beginTransaction()
+        val fragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.content, Home()).commit()
-        drawer!!.closeDrawer(GravityCompat.START)
+        //drawer!!.closeDrawer(GravityCompat.START)
 
     }
     override fun onBackPressed() {
@@ -54,8 +54,9 @@ class MainActivity : AppCompatActivity() {
             val id = menuItem.itemId
             when (id) {
                 R.id.home -> {
-                    var fragmentManager = supportFragmentManager
-                    var transaction = fragmentManager.beginTransaction()
+                    //frm_DiaDiemLeHoi.a=1.100010
+                    val fragmentManager = supportFragmentManager
+                    val transaction = fragmentManager.beginTransaction()
                     transaction.replace(R.id.content, Home()).commit()
                     drawer!!.closeDrawer(GravityCompat.START)
                 }

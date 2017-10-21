@@ -1,5 +1,6 @@
 package docongphuc.pttravle.HOME.ThanhQuan
 
+import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
@@ -27,11 +28,16 @@ class frm_tinhthanh :android.support.v4.app.Fragment() {
         val view=inflater!!.inflate(R.layout.frm_tinhthanh_dulich,container,false)
         var ExpandbleLV=view.findViewById<ExpandableListView>(R.id.expd_tinhthanh_dulich)
         addheader(KhuVuc)
-        HasMap!!.put(ArrayHeader!![0],Arraychild!!)
+       // HasMap!!.put(ArrayHeader!![0],Arraychild!!)
         var adapter= ExpdLisstView(this.context,ArrayHeader!!,HasMap!!)
         adapter.notifyDataSetChanged();
         ExpandbleLV!!.setAdapter(adapter)
-
+        ExpandbleLV.setOnGroupClickListener { parent, v, groupPosition, id ->
+           // Toast.makeText(this.activity, groupPosition.toString(), Toast.LENGTH_SHORT).show();
+            val intent = Intent(this.activity, ThongTinChiTiet_DDDL::class.java)
+            startActivity(intent)
+            true
+        }
         return view;
     }
 
