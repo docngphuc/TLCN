@@ -4,7 +4,8 @@ class LichTrinh_data_list {
     constructor()
 
     // lich ke hoach
-    constructor(ten: String, note: String, ngayBD: String, ngayKT: String, gioBD: String, gioKT: String) {
+    constructor(key : String, ten: String, note: String, ngayBD: String, ngayKT: String, gioBD: String, gioKT: String) {
+        this.key = key
         this.ten = ten
         this.note = note
         this.ngayBD = ngayBD
@@ -13,6 +14,7 @@ class LichTrinh_data_list {
         this.gioKT = gioKT
     }
 
+    var key : String = ""
     var ten : String = ""
     var note : String = ""
 

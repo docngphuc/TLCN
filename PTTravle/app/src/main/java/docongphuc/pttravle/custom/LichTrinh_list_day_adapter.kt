@@ -31,7 +31,7 @@ class LichTrinh_list_day_adapter(var context : Context, var mang : ArrayList<Lic
 
         if (convertview == null){
             val layoutinflater : LayoutInflater = LayoutInflater.from(context)
-            view = layoutinflater.inflate(R.layout.frm_lichtrinh_list_day, parent,false)
+            view = layoutinflater.inflate(R.layout.row_lichtrinh_list_day, parent,false)
             viewholder = viewHolder(view!!)
             view.tag = viewholder
         }
