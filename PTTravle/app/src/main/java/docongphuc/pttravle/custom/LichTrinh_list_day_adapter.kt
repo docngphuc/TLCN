@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import docongphuc.pttravle.R
-import docongphuc.pttravle.data.LichTrinh_data_event
+import docongphuc.pttravle.data.LichTrinh_data_list
 
-class Lich_adapter(var context : Context, var mang : ArrayList<LichTrinh_data_event>) : BaseAdapter() {
+class LichTrinh_list_day_adapter(var context : Context, var mang : ArrayList<LichTrinh_data_list>) : BaseAdapter() {
 
     class viewHolder (row : View){
         var txtten : TextView
@@ -40,12 +40,12 @@ class Lich_adapter(var context : Context, var mang : ArrayList<LichTrinh_data_ev
             viewholder = convertview.tag as viewHolder
         }
 
-        val lich : LichTrinh_data_event = getItem(position) as LichTrinh_data_event
+        val lich : LichTrinh_data_list = getItem(position) as LichTrinh_data_list
 
         viewholder.txtten.text = lich.ten
         viewholder.txtnote.text = lich.note
-        viewholder.txtgioKT.text = lich.time_KT.toString()
-        viewholder.txtgioBD.text = lich.time_BD.toString()
+        viewholder.txtgioKT.text = lich.gioKT
+        viewholder.txtgioBD.text = lich.gioBD
 
         return view as View
     }

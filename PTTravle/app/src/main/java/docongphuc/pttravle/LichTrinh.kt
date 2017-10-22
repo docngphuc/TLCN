@@ -12,8 +12,9 @@ import android.widget.Toast
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
 import com.google.firebase.database.*
-import docongphuc.pttravle.custom.Lich_adapter
-import docongphuc.pttravle.data.LichTrinh_data_day
+import docongphuc.pttravle.custom.LichTrinh_list_day_adapter
+import docongphuc.pttravle.data.LichTrinh_data_event
+import docongphuc.pttravle.data.LichTrinh_data_list
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -37,8 +38,9 @@ class LichTrinh : Fragment() {
     // khai bao cho lich
     lateinit var compactCalendar : CompactCalendarView
     lateinit var lvLich : ListView
-    lateinit var adapter : Lich_adapter
-    val list_lich : ArrayList<LichTrinh_data_day> = ArrayList()
+    lateinit var adapter : LichTrinh_list_day_adapter
+    val list_lich_event : ArrayList<LichTrinh_data_event> = ArrayList()
+    val list_lich_list : ArrayList<LichTrinh_data_list> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater!!.inflate(R.layout.frm_lichtrinh, container, false)
@@ -58,7 +60,7 @@ class LichTrinh : Fragment() {
 
         AddList()
 
-        adapter = Lich_adapter(activity, list_lich)
+        adapter = LichTrinh_list_day_adapter(activity, list_lich_list)
         lvLich.adapter = adapter
 
         // define a listener to receive callbacks when certain events happen.
@@ -80,37 +82,37 @@ class LichTrinh : Fragment() {
         val arr: MutableList<String> = mutableListOf("0")  // vi tri 0 : ""
 
         if (events != null) {
-            list_lich.clear()
+            list_lich_list.clear()
             for (booking in events) {
                 TachEvent(arr,booking.data.toString())
             }
-            //loadEvents_DayClick(arr)
+            loadEvents(arr)
             adapter.notifyDataSetChanged()
         }
     }
 
     // lay su kien khi lick vao ngay tren lich
-//    private fun loadEvents_DayClick(arr: MutableList<String>) {
-//
-//        val temp = arr.size-1
-//        for (i in 0..(temp/4-1)){
-//
-//            val mangLich = LichTrinh_data_day()
-//            val dateBD = java.sql.Date(arr[i*4+2].toLong())
-//            val dateKT = java.sql.Date(arr[i*4+3].toLong())
-//            val timeBD = java.sql.Time(arr[i*4+2].toLong())
-//            val timeKT = java.sql.Time(arr[i*4+3].toLong())
-//
-//            mangLich.ten     = arr[i*4+1]
-//            mangLich.ngayBD  = sdf_date.format(dateBD)
-//            mangLich.gioBD   = sdf_time.format(timeBD)
-//            mangLich.ngayKT  = sdf_date.format(dateKT)
-//            mangLich.gioKT   = sdf_time.format(timeKT)
-//            mangLich.note    = arr[i*4+4]
-//
-//            list_lich.add(mangLich)
-//        }
-//    }
+    private fun loadEvents(arr: MutableList<String>) {
+
+        val temp = arr.size-1
+        for (i in 0..(temp/4-1)){
+
+            val mangLich = LichTrinh_data_list()
+            val dateBD = java.sql.Date(arr[i*4+2].toLong())
+            val dateKT = java.sql.Date(arr[i*4+3].toLong())
+            val timeBD = java.sql.Time(arr[i*4+2].toLong())
+            val timeKT = java.sql.Time(arr[i*4+3].toLong())
+
+            mangLich.ten     = arr[i*4+1]
+            mangLich.ngayBD  = sdf_date.format(dateBD)
+            mangLich.gioBD   = sdf_time.format(timeBD)
+            mangLich.ngayKT  = sdf_date.format(dateKT)
+            mangLich.gioKT   = sdf_time.format(timeKT)
+            mangLich.note    = arr[i*4+4]
+
+            list_lich_list.add(mangLich)
+        }
+    }
 
     // tach chuoi event truyen vao
     private fun TachEvent(arr: MutableList<String>, event_data : String) {
@@ -129,12 +131,23 @@ class LichTrinh : Fragment() {
 
             override fun onChildChanged(p0: DataSnapshot?, p1: String?) {
                 val id_lich_change = p0!!.key
-                val lich = p0.getValue(LichTrinh_data_day::class.java)
-                val list = lich!!
+                val list = p0.getValue(LichTrinh_data_event::class.java)
+                var lich = list_lich_event[id_lich_change.toInt()]
                 val events_truoc = getEvents(lich.time_BD, lich.time_KT,lich.ten,lich.note)
-                val events_sau = getEvents(list.time_BD, list.time_KT,list.ten,list.note)
+                val events_sau = getEvents(list!!.time_BD, list.time_KT,list.ten,list.note)
 
-                list_lich[id_lich_change.toInt()] = lich
+                list_lich_event[id_lich_change.toInt()] = list
+                val arr: MutableList<String> = mutableListOf("0")  // vi tri 0 : ""
+                list_lich_list.clear()
+                for (i in 0..(list_lich_event.size-1)){
+                    lich = list_lich_event[i]
+                    val events = getEvents(lich.time_BD, lich.time_KT,lich.ten,lich.note)
+                    for (booking in events) {
+                        TachEvent(arr,booking.data.toString())
+                    }
+                }
+
+                loadEvents(arr)
                 adapter.notifyDataSetChanged()
 
                 compactCalendar.removeEvents(events_truoc)
@@ -142,12 +155,19 @@ class LichTrinh : Fragment() {
             }
 
             override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
-                val lich = p0!!.getValue(LichTrinh_data_day::class.java)
-                list_lich.add(lich!!)
-                adapter.notifyDataSetChanged()
+                val lich = p0!!.getValue(LichTrinh_data_event::class.java)
+                val events = getEvents(lich!!.time_BD, lich.time_KT,lich.ten,lich.note)
+                val arr: MutableList<String> = mutableListOf("0")  // vi tri 0 : ""
 
-                val events = getEvents(lich.time_BD, lich.time_KT,lich.ten,lich.note)
+                list_lich_event.add(lich)
+
                 compactCalendar.addEvents(events)
+
+                for (booking in events) {
+                    TachEvent(arr,booking.data.toString())
+                }
+                loadEvents(arr)
+                adapter.notifyDataSetChanged()
             }
 
             override fun onChildRemoved(p0: DataSnapshot?) {}

@@ -3,7 +3,7 @@ package docongphuc.pttravle.data
 /**
  * Created by user on 21-Oct-17.
  */
-class LichTrinh_data_day {
+class LichTrinh_data_event {
     constructor()
 
     // lich ke hoach
