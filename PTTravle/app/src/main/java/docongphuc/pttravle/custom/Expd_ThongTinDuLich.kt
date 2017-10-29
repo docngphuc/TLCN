@@ -16,10 +16,6 @@ import docongphuc.pttravle.data.ThongTinComment_DL
 import docongphuc.pttravle.data.ThongTinDiaDiem_DL
 import java.util.*
 
-
-/**
- * Created by Admin on 7/10/2017.
- */
 class Expd_ThongTinDuLich constructor(context: Context, mHeaderGroup: ArrayList<ThongTinDiaDiem_DL>, mDataChild: HashMap<ThongTinDiaDiem_DL, ArrayList<ThongTinComment_DL>>) : BaseExpandableListAdapter(),ExpandableListView.OnGroupClickListener
 {
     override fun onGroupClick(p0: ExpandableListView?, p1: View?, p2: Int, p3: Long): Boolean {

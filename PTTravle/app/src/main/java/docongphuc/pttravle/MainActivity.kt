@@ -7,71 +7,53 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DangNhap.GiaoTiep_DangNhap_MainActivity {
+
 
     val KEY_ID_USER = "ID_User"
-    val list_ID_User : ArrayList<String> = ArrayList()
     var id_USER = ""
+    var ten = ""
+    var ten_email = ""
+    var hinhDaiDien = ""
 
     val database    : DatabaseReference
-
     init {
         database    = FirebaseDatabase.getInstance().reference
     }
 
-    //private var drawerLayout: DrawerLayout? = null
+    override fun truyenUser(uid: String, name: String, email: String, photoUrl: String) {
+        id_USER = uid
+        ten = name
+        ten_email = email
+        hinhDaiDien = photoUrl
+    }
+
     private var actionBarDrawerToggle: ActionBarDrawerToggle? = null
     private var navigationView: NavigationView? = null
-    //private  var manager = supportFragmentManager;
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Lay_ID_User()
-
         actionBarDrawerToggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
-        //drawerLayout = findViewById<DrawerLayout>(R.id.drawer);
         drawer!!.addDrawerListener(actionBarDrawerToggle!!)
         actionBarDrawerToggle!!.syncState()
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         navigationView = findViewById<NavigationView>(R.id.navigation);
-        initNavigationDrawer();
+        initNavigationDrawer()
+
+        // mac dinh mo trang Home
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.content, Home()).commit()
-        //drawer!!.closeDrawer(GravityCompat.START)
 
-    }
-
-    private fun Lay_ID_User() {
-        database.child("Users").addChildEventListener(object : ChildEventListener {
-
-            override fun onCancelled(p0: DatabaseError?) {
-            }
-
-            override fun onChildMoved(p0: DataSnapshot?, p1: String?) {
-            }
-
-            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                list_ID_User.add(p0.key)
-            }
-
-            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                list_ID_User.add(p0.key)
-            }
-
-            override fun onChildRemoved(p0: DataSnapshot?) {
-            }
-        })
     }
 
     override fun onBackPressed() {
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         if (drawer!!.isDrawerOpen(GravityCompat.START)) {
             drawer!!.closeDrawer(GravityCompat.START)
         } else {
@@ -91,15 +73,12 @@ class MainActivity : AppCompatActivity() {
             val id = menuItem.itemId
             when (id) {
                 R.id.home -> {
-                    //frm_DiaDiemLeHoi.a=1.100010
                     val fragmentManager = supportFragmentManager
                     val transaction = fragmentManager.beginTransaction()
                     transaction.replace(R.id.content, Home()).commit()
                     drawer!!.closeDrawer(GravityCompat.START)
                 }
                 R.id.lichtrinh -> {
-                    id_USER = list_ID_User[1]
-
                     val bundle : Bundle = Bundle()
                     bundle.putString(KEY_ID_USER, id_USER)
 
@@ -123,8 +102,7 @@ class MainActivity : AppCompatActivity() {
                     transaction.replace(R.id.content, TaiKhoan()).commit()
                     drawer!!.closeDrawer(GravityCompat.START)
                 }
-                R.id.dangxuat -> {
-                    menuItem.title="Đăng Nhập"
+                R.id.dangNhapTK -> {
                     val fragmentManager = supportFragmentManager
                     val transaction = fragmentManager.beginTransaction()
                     transaction.replace(R.id.content, DangNhap()).commit()
@@ -133,7 +111,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
         actionBarDrawerToggle!!.syncState()
     }
 
@@ -142,5 +119,4 @@ class MainActivity : AppCompatActivity() {
         val length : Int = Toast.LENGTH_SHORT
         Toast.makeText(this, messsage, length).show()
     }
-
 }

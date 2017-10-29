@@ -7,9 +7,6 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
-/**
- * Created by Admin on 2/10/2017.
- */
 class ConnectDatabase {
     fun initDatabase(activity: Activity, databaseName: String): SQLiteDatabase {
         try {

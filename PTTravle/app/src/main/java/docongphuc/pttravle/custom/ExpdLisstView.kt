@@ -12,9 +12,6 @@ import docongphuc.pttravle.data.QuanHuyen
 import docongphuc.pttravle.data.TinhThanhPho
 import java.util.*
 
-/**
- * Created by Admin on 4/10/2017.
- */
 class ExpdLisstView constructor( context:Context,mHeaderGroup:ArrayList<TinhThanhPho>,mDataChild: HashMap<TinhThanhPho,ArrayList<QuanHuyen>>) : BaseExpandableListAdapter() {
  private var context:Context?=context;
     private var mHeaderGroup:ArrayList<TinhThanhPho>?=mHeaderGroup

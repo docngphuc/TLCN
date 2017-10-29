@@ -2,10 +2,6 @@ package docongphuc.pttravle.Maps
 
 import com.google.android.gms.maps.model.LatLng
 
-
-/**
- * Created by Admin on 12/10/2017.
- */
 class Route{
     var distance: Distance? = null
     var duration: Duration? = null

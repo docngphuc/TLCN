@@ -4,7 +4,7 @@
     <item android:id="@+id/lichtrinh" android:title="Lịch Trình"/>
     <item android:title="Trang Cá Nhân" android:id="@+id/trangcanhan"/>
     <item android:id="@+id/thongtin" android:title="Tài Khoản"/>
-    <item android:title="Dăng Xuất" android:id="@+id/dangxuat"/>
+    <item android:title="Đăng nhập" android:id="@+id/dangNhapTK"/>
 
 
 

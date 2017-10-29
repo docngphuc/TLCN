@@ -20,11 +20,7 @@ import docongphuc.pttravle.R
 import kotlinx.android.synthetic.main.activity_maps.*
 import java.io.UnsupportedEncodingException
 
-
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback,DirectionFinderListener {
-
-
-
 
     private lateinit var mMap: GoogleMap
     private var originMarkers:ArrayList<Marker> = ArrayList()

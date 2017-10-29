@@ -11,9 +11,6 @@ import android.widget.Toast
 import docongphuc.pttravle.Maps.getLatlng
 import docongphuc.pttravle.R
 
-/**
- * Created by Admin on 29/9/2017.
- */
 class frm_theloai :Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

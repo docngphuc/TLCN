@@ -4,9 +4,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 
-/**
- * Created by Admin on 26/9/2017.
- */
 open class PageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     private val tabTitles = arrayOf("Du Lịch", "Lễ Hội");
     private  var FrmItem: ArrayList<Fragment> = ArrayList();

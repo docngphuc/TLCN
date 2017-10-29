@@ -13,9 +13,6 @@ import docongphuc.pttravle.custom.Adapter_LVQuanAn
 import docongphuc.pttravle.data.QuanHuyen
 import docongphuc.pttravle.data.ThongTinQuanAN_DL
 
-/**
- * Created by Admin on 16/10/2017.
- */
 class frm_ThongTinNoiO: Fragment() {
     var listanhquanan:ArrayList<QuanHuyen> = ArrayList()
     var listQuanAn:ArrayList<ThongTinQuanAN_DL> = ArrayList()

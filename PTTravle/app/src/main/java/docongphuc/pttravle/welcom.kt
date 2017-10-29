@@ -22,7 +22,6 @@ class welcom : AppCompatActivity() {
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 }
-
             }
         }
         thread.start()

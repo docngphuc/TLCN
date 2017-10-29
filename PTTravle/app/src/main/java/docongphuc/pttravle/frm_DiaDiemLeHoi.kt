@@ -7,10 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import docongphuc.pttravle.Maps.getLatlng
 
-
-/**
- * Created by Admin on 26/9/2017.
- */
 class frm_DiaDiemLeHoi : Fragment(){
         var lat:Double=0.7
         var b:Double=0.0

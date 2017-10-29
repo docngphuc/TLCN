@@ -20,7 +20,6 @@
             android:layout_marginRight="3dp"
             android:layout_marginTop="2dp"
             android:textStyle="bold"
-            android:text="Dỗ Phúc"
             android:textColor="@color/textcolor" />
         <TextView
             android:id="@+id/email"
@@ -28,9 +27,6 @@
             android:textStyle="italic"
             android:textColor="@color/textcolor"
             android:layout_marginTop="5dp"
-            android:text="Congphuc208@gmail.com"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-
 </LinearLayout>

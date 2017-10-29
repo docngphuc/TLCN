@@ -14,9 +14,6 @@ import docongphuc.pttravle.custom.ExpdLisstView
 import docongphuc.pttravle.data.QuanHuyen
 import docongphuc.pttravle.data.TinhThanhPho
 
-/**
- * Created by Admin on 29/9/2017.
- */
 class frm_tinhthanh :android.support.v4.app.Fragment() {
     private val DATABASENAME:String="TinhThanhPho.sqlite"
    private var database: SQLiteDatabase?=null;

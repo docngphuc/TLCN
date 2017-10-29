@@ -13,9 +13,6 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
-/**
- * Created by Admin on 19/10/2017.
- */
 class getLatlng(): AsyncTask<String, Void, String>() {
     //var lat:Double=9.0
     var long:Double=1.0

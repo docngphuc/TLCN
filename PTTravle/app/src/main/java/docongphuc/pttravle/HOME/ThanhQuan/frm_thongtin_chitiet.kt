@@ -11,9 +11,6 @@ import docongphuc.pttravle.R
 import docongphuc.pttravle.custom.PagerAdapter_Hinhanh
 import docongphuc.pttravle.data.QuanHuyen
 
-/**
- * Created by Admin on 11/10/2017.
- */
 class frm_thongtin_chitiet : Fragment() {
     var Arraychild:ArrayList<QuanHuyen>?= ArrayList();
 

@@ -14,9 +14,6 @@ import docongphuc.pttravle.HOME.ThanhQuan.frm_tinhthanh
 import docongphuc.pttravle.Maps.getLatlng
 import kotlinx.android.synthetic.main.frm_diadiemdulich.*
 
-/**
- * Created by Admin on 26/9/2017.
- */
 class frm_DiaDiemDuLich : Fragment(){
     companion object{
         @JvmStatic

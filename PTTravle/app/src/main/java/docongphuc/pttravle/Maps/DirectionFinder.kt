@@ -11,10 +11,6 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
-
-/**
- * Created by Admin on 12/10/2017.
- */
 class DirectionFinder(listener: MapsActivity, origin: String, destination: String) {
     private val DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?"
     private val GOOGLE_API_KEY = "AIzaSyCvDyqpAG0Sq-A7GNkKxfWw85jaE2hQ2Yo"

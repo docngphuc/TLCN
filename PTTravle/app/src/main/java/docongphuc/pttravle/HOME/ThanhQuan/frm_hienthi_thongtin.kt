@@ -11,15 +11,6 @@ import docongphuc.pttravle.custom.Expd_ThongTinDuLich
 import docongphuc.pttravle.data.ThongTinComment_DL
 import docongphuc.pttravle.data.ThongTinDiaDiem_DL
 
-
-
-
-
-
-
-/**
- * Created by Admin on 29/9/2017.
- */
 class frm_hienthi_thongtin : Fragment() {
     //lateinit var adapter:Expd_ThongTinDuLich
     //private var ExpandbleLV: ExpandableListView?= null

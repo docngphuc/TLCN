@@ -11,9 +11,6 @@ import com.bumptech.glide.Glide
 import docongphuc.pttravle.R
 import docongphuc.pttravle.data.QuanHuyen
 
-/**
- * Created by Admin on 11/10/2017.
- */
 class PagerAdapter_Hinhanh: PagerAdapter {
     var context:Context
     var ArrayUrl:ArrayList<QuanHuyen>

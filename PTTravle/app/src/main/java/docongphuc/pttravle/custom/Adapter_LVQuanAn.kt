@@ -11,9 +11,6 @@ import com.bumptech.glide.Glide
 import docongphuc.pttravle.R
 import docongphuc.pttravle.data.ThongTinQuanAN_DL
 
-/**
- * Created by Admin on 15/10/2017.
- */
 class Adapter_LVQuanAn constructor(var context:Context, var ArrList:ArrayList<ThongTinQuanAN_DL>): BaseAdapter() {
     class ViewHolder(row: View){
         var anhdaidien:ImageView

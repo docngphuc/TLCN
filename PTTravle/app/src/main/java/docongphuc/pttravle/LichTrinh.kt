@@ -107,12 +107,22 @@ class LichTrinh : Fragment() {
             }
         })
 
+        //addLich_test()
+
         return view
     }
 
-    // lay du lieu tren firebase va them list
+    private fun addLich_test() {
+        val ref = database.child("lich").child(id_User).push()
+        val key = ref.key
+        // 10/10/2017 - 20/10/2017
+        val lich = LichTrinh_data_event(key, "trung", 1507568400000, 1508432400000, "chu thich")
+        ref.setValue(lich)
+    }
+
+    // lay du lieu tren firebase va them vao list va compactCalendar
     private fun AddList() {
-        database.child("Users").child(id_User).child("lich").addChildEventListener(object : ChildEventListener {
+        database.child("lich").child(id_User).addChildEventListener(object : ChildEventListener {
             override fun onCancelled(p0: DatabaseError?) {}
 
             override fun onChildMoved(p0: DataSnapshot?, p1: String?) {}
@@ -209,23 +219,28 @@ class LichTrinh : Fragment() {
     private fun loadEvents(arr: MutableList<String>) {
 
         val temp = arr.size-1
-        for (i in 0..(temp/5-1)){
+        if (temp != 0){
+            for (i in 0..(temp/5-1)){
 
-            val mangLich = LichTrinh_data_list()
-            val dateBD = java.sql.Date(arr[i*5+2].toLong())
-            val dateKT = java.sql.Date(arr[i*5+3].toLong())
-            val timeBD = java.sql.Time(arr[i*5+2].toLong())
-            val timeKT = java.sql.Time(arr[i*5+3].toLong())
+                val mangLich = LichTrinh_data_list()
+                val dateBD = java.sql.Date(arr[i*5+2].toLong())
+                val dateKT = java.sql.Date(arr[i*5+3].toLong())
+                val timeBD = java.sql.Time(arr[i*5+2].toLong())
+                val timeKT = java.sql.Time(arr[i*5+3].toLong())
 
-            mangLich.ten     = arr[i*5+1]
-            mangLich.ngayBD  = sdf_date.format(dateBD)
-            mangLich.gioBD   = sdf_time.format(timeBD)
-            mangLich.ngayKT  = sdf_date.format(dateKT)
-            mangLich.gioKT   = sdf_time.format(timeKT)
-            mangLich.note    = arr[i*5+4]
-            mangLich.key     = arr[i*5+5]
+                mangLich.ten     = arr[i*5+1]
+                mangLich.ngayBD  = sdf_date.format(dateBD)
+                mangLich.gioBD   = sdf_time.format(timeBD)
+                mangLich.ngayKT  = sdf_date.format(dateKT)
+                mangLich.gioKT   = sdf_time.format(timeKT)
+                mangLich.note    = arr[i*5+4]
+                mangLich.key     = arr[i*5+5]
 
-            list_lich_list.add(mangLich)
+                list_lich_list.add(mangLich)
+            }
+        }
+        else{
+            ShortToast("Không có lịch")
         }
     }
 
@@ -400,7 +415,7 @@ class LichTrinh : Fragment() {
 
                             // ngay BD co truoc hoac cung thoi gian voi ngay KT
                             if (date1.before(date2) || date1.equals(date2)) {
-                                val ref = database.child("Users").child(id_User).child("lich").push()
+                                val ref = database.child("lich").child(id_User).push()
                                 val key = ref.key
 
                                 val lich = LichTrinh_data_event(
@@ -428,7 +443,7 @@ class LichTrinh : Fragment() {
             }
 
             R.id.cnt_mnu_delete ->{
-                val ref = database.child("Users").child(id_User).child("lich").child(""+ key_value)
+                val ref = database.child("lich").child(id_User).child(""+ key_value)
                 if (key_value != ""){
                     ref.removeValue()
                 }else{
