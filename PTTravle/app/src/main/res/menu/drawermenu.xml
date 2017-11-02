@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/home"  android:title="Home"/>
     <item android:id="@+id/lichtrinh" android:title="Lịch Trình"/>
-    <item android:title="Trang Cá Nhân" android:id="@+id/trangcanhan"/>
+    <item android:title="Bộ sưu tập" android:id="@+id/album"/>
     <item android:id="@+id/thongtin" android:title="Tài Khoản"/>
     <item android:title="Đăng nhập" android:id="@+id/dangNhapTK"/>
 

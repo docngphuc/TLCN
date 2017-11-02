@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -18,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import de.hdodenhof.circleimageview.CircleImageView
 import docongphuc.pttravle.data.User
 import kotlinx.android.synthetic.main.frm_dangnhap.view.*
 
@@ -40,13 +43,11 @@ class DangNhap : Fragment(), View.OnClickListener, GoogleApiClient.OnConnectionF
     private lateinit var mAuth : FirebaseAuth               // khai bao ket noi firebase
     private lateinit var mGoogleApiClient: GoogleApiClient  // khai bao sign in google
     private val RC_SIGN_IN = 999
-    var database    : DatabaseReference
 
+    var database    : DatabaseReference
     init {
         database    = FirebaseDatabase.getInstance().reference
     }
-
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view =inflater!!.inflate(R.layout.frm_dangnhap,container,false)
@@ -56,14 +57,20 @@ class DangNhap : Fragment(), View.OnClickListener, GoogleApiClient.OnConnectionF
         initGoogle()
 
         // ket noi firebase
-        mAuth = FirebaseAuth.getInstance()
 
+        mAuth = FirebaseAuth.getInstance()
         return view
     }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         truyen = activity as GiaoTiep_DangNhap_MainActivity
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mGoogleApiClient.stopAutoManage(activity)
+        mGoogleApiClient.disconnect()
     }
 
     private fun init(view: View) {
@@ -155,13 +162,21 @@ class DangNhap : Fragment(), View.OnClickListener, GoogleApiClient.OnConnectionF
             emailVerified = user.isEmailVerified
             uid = user.uid
 
+            val ten         : TextView = activity.findViewById<TextView>(R.id.username)
+            val nameEmail   : TextView          = activity.findViewById<TextView>(R.id.email)
+            val anh         : CircleImageView = activity.findViewById<CircleImageView>(R.id.profile_image)
+
+            ten.text        = name
+            nameEmail.text  = email
+
+            Glide.with(activity).load(photoUrl)
+                    .centerCrop()
+                    .error(R.drawable.dislike)
+                    .into(anh)
+
             KhoiTaoUser()
             truyen!!.truyenUser(uid,name,email,photoUrl)
         }
-
-        val fragmentManager = activity.supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.content, Home()).commit()
     }
 
     private fun KhoiTaoUser() {

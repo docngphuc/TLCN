@@ -24,12 +24,12 @@ class frm_hienthi_thongtin : Fragment() {
 //        Arraychild=ArrayList();
 //        HasMap=HashMap()
 //        ArrayHeader = ArrayList()
-       var adapter=Expd_ThongTinDuLich(this.activity,ArrayHeader!!,HasMap!!)
+        var adapter=Expd_ThongTinDuLich(this.activity,ArrayHeader!!,HasMap!!)
 
         ArrayHeader!!.add(ThongTinDiaDiem_DL("khu du lich van thanh","122/2/3/4/3/4/nguyenhuucanh/p22","https://www.w3schools.com/css/img_fjords.jpg","123","123",3.4f))
-            Arraychild!!.add(ThongTinComment_DL("nguak","rất đẹp b=và có cái gì đó trong rất thiên nhiên tôi nghĩ là lần này ming là nó sẽ thành công","http://www.daikynguyenvn.com/wp-content/uploads/2016/05/Nhung-chu-cho-dang-yeu-14-620x353.jpg","3 phút tước"))
-            Arraychild!!.add(ThongTinComment_DL("Nguhghe","rất đaaaaaaaaaaaaaaaa thiên nhiên tôi nghĩ là lần này ming là nó sẽ thành công","https://i.ytimg.com/vi/ftxGKhNMCCE/maxresdefault.jpg","7 ngày trước"))
-            HasMap!!.put(ArrayHeader!![0],Arraychild!!)
+        Arraychild!!.add(ThongTinComment_DL("nguak","rất đẹp b=và có cái gì đó trong rất thiên nhiên tôi nghĩ là lần này ming là nó sẽ thành công","http://www.daikynguyenvn.com/wp-content/uploads/2016/05/Nhung-chu-cho-dang-yeu-14-620x353.jpg","3 phút tước"))
+        Arraychild!!.add(ThongTinComment_DL("Nguhghe","rất đaaaaaaaaaaaaaaaa thiên nhiên tôi nghĩ là lần này ming là nó sẽ thành công","https://i.ytimg.com/vi/ftxGKhNMCCE/maxresdefault.jpg","7 ngày trước"))
+        HasMap!!.put(ArrayHeader!![0],Arraychild!!)
         ArrayHeader!!.add(ThongTinDiaDiem_DL("khu du Bình quới","122/2/3/4/3/4/nguyenhuucanh/p22","http://media.dulich24.com.vn/diemden/khu-du-lich-van-thanh-7140/khu-du-lich-van-thanh-1.jpg","123","123",3.4f))
         Arraychild!!.add(ThongTinComment_DL("nguak","rất đẹp b=và có cái gì đó trong rất thiên nhiên tôi nghĩ là lần này ming là nó sẽ thành công","https://lh3.googleusercontent.com/-sQdyWFwBwts/VqC4FJm4WeI/AAAAAAAAWJE/k3T0PtY5zyQ/s600-Ic42/h%2525C3%2525ACnh-%2525E1%2525BA%2525A3nh-ch%2525C3%2525B3-m%2525E1%2525BA%2525B7t-x%2525E1%2525BB%252587-d%2525E1%2525BB%252585-th%2525C6%2525B0%2525C6%2525A1ng-11.jpg"," 4 phút tước"))
         Arraychild!!.add(ThongTinComment_DL("Nguhghe","rất đaaaaaaaaaaaaaaaa thiên nhiên tôi nghĩ là lần này ming là nó sẽ thành công","http://cms.kienthuc.net.vn/uploaded/tuyetmai/2015_06_23/cng%20dong/cho/bo-anh-ngo-nghinh-50-sac-thai-cua-nhung-chu-cho-hinh-3.jpg","5 ngày tước"))
@@ -45,8 +45,8 @@ class frm_hienthi_thongtin : Fragment() {
         HasMap!!.put(ArrayHeader!![4],Arraychild!!)
         HasMap!!.put(ArrayHeader!![5],Arraychild!!)
 
-            adapter.notifyDataSetChanged();
-            ExpandbleLV!!.setAdapter(adapter)
+        adapter.notifyDataSetChanged();
+        ExpandbleLV!!.setAdapter(adapter)
 
 //        ExpandbleLV.setOnGroupClickListener() { parent, v, groupPosition, id ->
 //            // Toast.makeText(this.activity, groupPosition.toString(), Toast.LENGTH_SHORT).show();

@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(), DangNhap.GiaoTiep_DangNhap_MainActivit
 
 
     val KEY_ID_USER = "ID_User"
-    var id_USER = ""
+    var id_USER = "null"
     var ten = ""
     var ten_email = ""
     var hinhDaiDien = ""
@@ -47,9 +47,9 @@ class MainActivity : AppCompatActivity(), DangNhap.GiaoTiep_DangNhap_MainActivit
         initNavigationDrawer()
 
         // mac dinh mo trang Home
-        val fragmentManager = supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.content, Home()).commit()
+//        val fragmentManager = supportFragmentManager
+//        val transaction = fragmentManager.beginTransaction()
+//        transaction.replace(R.id.content, Home()).commit()
 
     }
 
@@ -90,16 +90,29 @@ class MainActivity : AppCompatActivity(), DangNhap.GiaoTiep_DangNhap_MainActivit
                     transaction.replace(R.id.content, lichTrinh).commit()
                     drawer!!.closeDrawer(GravityCompat.START)
                 }
-                R.id.trangcanhan -> {
+                R.id.album -> {
+
+                    val bundle : Bundle = Bundle()
+                    bundle.putString(KEY_ID_USER, id_USER)
+
+                    val boSuuTap = BoSuuTap()
+                    boSuuTap.arguments = bundle
+
                     val fragmentManager = supportFragmentManager
                     val transaction = fragmentManager.beginTransaction()
-                    transaction.replace(R.id.content, TrangCaNhan()).commit()
+                    transaction.replace(R.id.content, boSuuTap).commit()
                     drawer!!.closeDrawer(GravityCompat.START)
                 }
                 R.id.thongtin -> {
+                    val bundle : Bundle = Bundle()
+                    bundle.putString(KEY_ID_USER, id_USER)
+
+                    val taiKhoan = TaiKhoan()
+                    taiKhoan.arguments = bundle
+
                     val fragmentManager = supportFragmentManager
                     val transaction = fragmentManager.beginTransaction()
-                    transaction.replace(R.id.content, TaiKhoan()).commit()
+                    transaction.replace(R.id.content, taiKhoan).commit()
                     drawer!!.closeDrawer(GravityCompat.START)
                 }
                 R.id.dangNhapTK -> {
