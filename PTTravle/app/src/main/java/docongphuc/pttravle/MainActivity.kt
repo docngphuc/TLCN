@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(), DangNhap.GiaoTiep_DangNhap_MainActivit
 
 
     val KEY_ID_USER = "ID_User"
-    var id_USER = "null"
+    var id_USER = ""
     var ten = ""
     var ten_email = ""
     var hinhDaiDien = ""
@@ -47,9 +47,9 @@ class MainActivity : AppCompatActivity(), DangNhap.GiaoTiep_DangNhap_MainActivit
         initNavigationDrawer()
 
         // mac dinh mo trang Home
-//        val fragmentManager = supportFragmentManager
-//        val transaction = fragmentManager.beginTransaction()
-//        transaction.replace(R.id.content, Home()).commit()
+        val fragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.content, Home()).commit()
 
     }
 
@@ -126,6 +126,7 @@ class MainActivity : AppCompatActivity(), DangNhap.GiaoTiep_DangNhap_MainActivit
         }
         actionBarDrawerToggle!!.syncState()
     }
+
 
     // hien dong thong bao
     private fun ShortToast(messsage : String) {

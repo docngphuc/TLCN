@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.io.File
-
-
-
+import docongphuc.pttravle.custom.AlbumAdapter
+import docongphuc.pttravle.data.ListItemAlbum
 
 
 class BoSuuTap : Fragment(){
@@ -32,8 +32,10 @@ class BoSuuTap : Fragment(){
 
     var btnDownload : Button? = null
     var imageDownload : ImageView? = null
-
-    val listImage : ArrayList<String> = ArrayList()
+    var listAlbum : ListView? = null
+    lateinit var adapter : AlbumAdapter
+    val listImage : ArrayList<ListItemAlbum> = ArrayList()
+    val listURL : ArrayList<String> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater!!.inflate(R.layout.frm_album, container, false)
@@ -42,9 +44,11 @@ class BoSuuTap : Fragment(){
 
         btnDownload = view.findViewById(R.id.btnDownload)
         imageDownload = view.findViewById(R.id.img_download)
+        listAlbum = view.findViewById(R.id.list_album)
 
         LoadAlbum()
-
+        adapter = AlbumAdapter(activity,listImage)
+        listAlbum!!.adapter = adapter
         // Download hinh
         btnDownload!!.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
@@ -61,17 +65,10 @@ class BoSuuTap : Fragment(){
     }
 
     private fun ShowImage() {
-        val localFile : File = File.createTempFile(listImage[0],"png")
-        storageref.getFile(localFile)
-                .addOnSuccessListener({
-//                    Glide.with(activity)
-//                            .using(FirebaseImageLoader())
-//                            .load(storageref.downloadUrl)
-//                            .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-//                            .into(mImageQuestion)
-                })
-                .addOnFailureListener({
-                })
+        Glide.with(activity)
+                .load(listURL[0])
+                .asBitmap()
+                .into(imageDownload)
     }
 
     private fun LoadAlbum() {
@@ -83,7 +80,10 @@ class BoSuuTap : Fragment(){
 
             override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
                 val image = p0!!.value.toString()
-                listImage.add(image)
+                val l : ListItemAlbum = ListItemAlbum()
+                l.setUrl(image)
+                listURL.add(image)
+                listImage.add(l)
             }
         })
     }

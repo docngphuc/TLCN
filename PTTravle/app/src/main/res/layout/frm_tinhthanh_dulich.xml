@@ -7,27 +7,41 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="3">
         <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
             android:id="@+id/txtvung"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:text="Đông Nam Bộ"
+            android:text="Khu Vực: "
             android:textColor="#d21c1c"
             android:textSize="20sp"/>
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="right">
-            <Button
-                android:background="#edebeb"
-                android:id="@+id/btndoi_tinhthanh_dulich"
+            <Spinner
+                android:id="@+id/Sp_KhuVuc"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="85dp"
-                android:text="Đổi Khu Vực"
-                android:textSize="10sp"/>
+                android:layout_height="wrap_content">
+
+            </Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right">
+            <CheckBox
+                android:id="@+id/ChonkhuVuc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
     <RelativeLayout

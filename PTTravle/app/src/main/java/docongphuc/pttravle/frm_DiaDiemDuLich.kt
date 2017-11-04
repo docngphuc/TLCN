@@ -21,16 +21,13 @@ class frm_DiaDiemDuLich : Fragment(){
     }
     var stchinhanh:getLatlng? = getLatlng()
 
-    var BtnTheLoai: Button?=null
-    var BtnTinhThanh: Button?=null
-
+    private var BtnTheLoai: Button?=null
+    private var BtnTinhThanh: Button?=null;
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater!!.inflate(R.layout.frm_diadiemdulich,container,false)
-
-        BtnTheLoai      = view.findViewById(R.id.btntheloai)
-        BtnTinhThanh    = view.findViewById(R.id.btntinhthanh)
-
-        val fragmentManager = activity.supportFragmentManager
+        val view =inflater!!.inflate(R.layout.frm_diadiemdulich,container,false);
+        BtnTheLoai=view.findViewById<Button>(R.id.btntheloai)
+        BtnTinhThanh=view.findViewById<Button>(R.id.btntinhthanh)
+        val fragmentManager =this.activity.supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.content_dulich, frm_hienthi_thongtin()).commit()
         adfragment()

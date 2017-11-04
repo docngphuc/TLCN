@@ -59,6 +59,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "318147422549-lukqil7rk3m6k7e83drmkv3is97ict6s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "docongphuc.pttravle",
+            "certificate_hash": "e03f6dbe4076efb22a7b361173fdc2cf107a190e"
+          }
+        },
+        {
           "client_id": "318147422549-fopmlbv3co6hlacujcdopvdvjr3ojr27.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

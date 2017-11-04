@@ -9,5 +9,6 @@ class Route{
     var endLocation: LatLng? = null
     var startAddress: String? = null
     var startLocation: LatLng? = null
+
     var points: List<LatLng>? = null
 }

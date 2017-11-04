@@ -117,45 +117,7 @@ When you assign input filters in code all previously set input filters are clear
                         android:text="6"
                         android:layout_marginLeft="2dp" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <EditText
-                        android:id="@+id/Comment_DDDL"
-                        android:maxLength="800"
-                        android:hint="nhận xét của bạn về địa điểm này"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/botrongoc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <Button
-                        android:id="@+id/DangBinhLuan"
-                        android:layout_marginLeft="50dp"
-                        android:text="Đăng"
-                        android:textColor="@color/white"
-                        android:background="@color/colorAccent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp" />
-                    <Button
-                        android:layout_marginLeft="100dp"
-                        android:layout_gravity="right"
-                        android:id="@+id/HuyComment"
-                        android:text="Hủy"
-                        android:textColor="@color/white"
-                        android:background="@color/colorPrimary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        tools:ignore="RtlHardcoded" />
-                </LinearLayout>
+
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_marginTop="20dp"

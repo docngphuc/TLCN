@@ -18,13 +18,21 @@
     <string name="edit">Sửa lịch</string>
 
     <string-array name="maps_type">
-        <item >MAP_TYPE_NONE</item>
-        <item >MAP_TYPE_NORMAL</item>
-        <item >MAP_TYPE_SATELLITE</item>
-        <item >MAP_TYPE_HYBRID</item>
-        <item >MAP_TYPE_TERRAIN</item>
+        <item>MAP_TYPE_NONE</item>
+        <item>MAP_TYPE_NORMAL</item>
+        <item>MAP_TYPE_SATELLITE</item>
+        <item>MAP_TYPE_HYBRID</item>
+        <item>MAP_TYPE_TERRAIN</item>
     </string-array>
-
+    <string-array name="KhuVuc">
+        <item>ĐB Sông Cửu Long</item>
+        <item>Đông Nam Bộ</item>
+        <item>Tây Nguyên</item>
+        <item>Bắc Trung Bộ</item>
+        <item>Ven Biển Miền Trung</item>
+        <item>ĐB Sông Hồng</item>
+        <item>Vùng Núi Phía Bắc</item>
+    </string-array>
     <string name="str_cnt_mnu_add">Add</string>
     <string name="str_cnt_mnu_edit">Edit</string>
     <string name="str_cnt_mnu_delete">Delete</string>

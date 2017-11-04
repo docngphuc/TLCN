@@ -22,16 +22,16 @@ class getLatlng(): AsyncTask<String, Void, String>() {
     @SuppressLint("StaticFieldLeak")
     override fun doInBackground(vararg p0: String?): String {
 
-        val DIRECTION_URL_API   = "https://maps.googleapis.com/maps/api/geocode/json?address="
-        val GOOGLE_API_KEY      = "AIzaSyC3AXK8d8k3yM7GzZGV7JDwR36vF0kyNm4"
-        val urlOrigin           = URLEncoder.encode(p0[0], "utf-8")
-        val URL = DIRECTION_URL_API  + urlOrigin +"&key=" + GOOGLE_API_KEY
+         val DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/geocode/json?address="
+         val GOOGLE_API_KEY = "AIzaSyC3AXK8d8k3yM7GzZGV7JDwR36vF0kyNm4"
+        val urlOrigin = URLEncoder.encode(p0[0], "utf-8")
+        var URL=DIRECTION_URL_API  + urlOrigin +"&key=" + GOOGLE_API_KEY
         val content: StringBuffer = StringBuffer()
-        val url:URL = URL(URL)
+        val url:URL= URL(URL)
         val urlConection:HttpURLConnection=url.openConnection()as HttpURLConnection
         val inputStreamReader:InputStreamReader=InputStreamReader(urlConection.inputStream)
         val bufferReader:BufferedReader= BufferedReader(inputStreamReader as Reader?)
-        var line: String = ""
+        var line:String=""
         try {
             do {
                 line=bufferReader.readLine()
@@ -39,7 +39,7 @@ class getLatlng(): AsyncTask<String, Void, String>() {
                     content.append(line)
                 }
 
-            }while (line != null)
+            }while (line!=null)
             bufferReader.close()
 
         }catch (e:Exception){

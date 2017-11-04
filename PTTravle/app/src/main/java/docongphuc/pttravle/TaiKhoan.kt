@@ -83,11 +83,11 @@ class TaiKhoan :Fragment(){
             dialog.show()
 
             //val ref : StorageReference = storageref.child("image/" + id_random)
-            val ref : StorageReference = storageref.child(id_random)
+            val ref : StorageReference = storageref.child(id_User + "/image_" + id_random + ".png")
             ref.putFile(filePath!!)
-                    .addOnSuccessListener (OnSuccessListener {
+                    .addOnSuccessListener (OnSuccessListener {taskSnapshot ->
                         dialog.dismiss()
-                        UploadImageAlbum(id_random, id_User)
+                        UploadImageAlbum(taskSnapshot.downloadUrl.toString(), id_User)
                     })
                     .addOnFailureListener(OnFailureListener {
                         dialog.dismiss()
@@ -100,27 +100,29 @@ class TaiKhoan :Fragment(){
         }
     }
 
-    private fun UploadImageAlbum(id_random: String, id_User: String?) {
-        database.child("Album").child(id_User).push().setValue(id_random)
+    private fun UploadImageAlbum(imageURL: String, id_User: String?) {
+        database.child("Album").child(id_User).push().setValue(imageURL)
         ShortToast("Success")
     }
 
     private fun ChooseImage() {
-        val intent : Intent = Intent()
+        val intent : Intent =  Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
 
         startActivityForResult(Intent.createChooser(intent,"select picture"),PICK_IMAGE_REQUEST)
+//        startActivity(Intent.createChooser(intent,"select picture"))
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null){
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data!!.data != null){
 
             filePath = data.data
             image!!.setImageBitmap(null)
             try {
-                val bm = BitmapFactory.decodeStream(activity.contentResolver.openInputStream(filePath))
+                val bm = BitmapFactory.decodeStream(this.context.contentResolver.openInputStream(filePath))
                 image!!.setImageBitmap(bm)
             } catch (e: IOException) {
                 e.printStackTrace()
